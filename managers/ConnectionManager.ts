@@ -81,7 +81,7 @@ export abstract class ConnectionManager {
   }
 
   updateSocket(uniqueKey: string, socket: Socket): Connection | null {
-    const conn = this.findConnectionByCode(uniqueKey);
+    const conn = this.findConnectionByKey(uniqueKey);
 
     if (conn) {
       if (conn.getSocket().id !== socket.id) {
@@ -96,7 +96,7 @@ export abstract class ConnectionManager {
     return null;
   }
 
-  protected abstract findConnectionByCode(
+  protected abstract findConnectionByKey(
     uniqueKey: string
   ): Connection | undefined;
 }
