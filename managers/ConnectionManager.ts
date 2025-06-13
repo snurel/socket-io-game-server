@@ -80,13 +80,8 @@ export abstract class ConnectionManager {
     this.addListeners(conn.getSocket());
   }
 
-  updateSocket(
-    name: string,
-    secret: string,
-    socket: Socket
-  ): Connection | null {
-    const code = `${name}-${secret}`;
-    const conn = this.findConnectionByCode(code);
+  updateSocket(uniqueKey: string, socket: Socket): Connection | null {
+    const conn = this.findConnectionByCode(uniqueKey);
 
     if (conn) {
       if (conn.getSocket().id !== socket.id) {
@@ -101,12 +96,7 @@ export abstract class ConnectionManager {
     return null;
   }
 
-  private findConnectionByCode(code: string): Connection | undefined {
-    for (const conn of this.connections.values()) {
-      if (conn.getUserCode() === code) {
-        return conn;
-      }
-    }
-    return undefined;
-  }
+  protected abstract findConnectionByCode(
+    uniqueKey: string
+  ): Connection | undefined;
 }

@@ -5,7 +5,6 @@ export abstract class GameManager {
   games: Map<number, Game>;
 
   private static instance: GameManager;
-  static ID_COUNTER = 0;
 
   static init(manager: GameManager) {
     if (!this.instance) {
@@ -18,7 +17,7 @@ export abstract class GameManager {
   }
 
   static generateId() {
-    return ++GameManager.ID_COUNTER;
+    return IdGenerator.get();
   }
 
   constructor() {
