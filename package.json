@@ -1,0 +1,30 @@
+{
+  "name": "socket-io-game-server",
+  "version": "1.0.0",
+  "description": "A lightweight, real-time multiplayer game server built with Socket.IO. Handles player connections, game state synchronization, and event-driven communication for fast-paced, interactive gameplay. Easily extendable for various board or action games. ",
+  "keywords": [
+    "game",
+    "server",
+    "socket-io",
+    "multiplayer",
+    "nodejs"
+  ],
+  "homepage": "https://github.com/snurel/socket-io-game-server#readme",
+  "bugs": {
+    "url": "https://github.com/snurel/socket-io-game-server/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snurel/socket-io-game-server.git"
+  },
+  "license": "ISC",
+  "author": "Samet Nurel",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "socket.io": "^4.8.1"
+  }
+}
