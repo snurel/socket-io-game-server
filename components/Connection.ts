@@ -47,4 +47,8 @@ export class Connection {
   getUserId(): number | undefined {
     return this.user?.getId();
   }
+
+  getUniqueKey(): string {
+    return this.user?.getName() ?? '';
+  }
 }

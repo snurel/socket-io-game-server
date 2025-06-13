@@ -11,7 +11,7 @@ A modular, TypeScript-based Socket.IO game server framework, designed for managi
 ## 📦 Installation
 
 ```bash
-npm install socketio-game-server
+npm install @sametnurel/socketio-game-server
 ```
 
 ---

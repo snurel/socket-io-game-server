@@ -1,8 +1,7 @@
 {
-  "name": "socket-io-game-server",
-  "version": "0.0.1",
-  "private": "false",
-  "description": "A lightweight, real-time multiplayer game server built with Socket.IO. Handles player connections, game state synchronization, and event-driven communication for fast-paced, interactive gameplay. Easily extendable for various board or action games. ",
+  "name": "@sametnurel/socket-io-game-server",
+  "version": "0.0.4",
+  "description": "A lightweight, real-time multiplayer game server built with Socket.IO.",
   "keywords": [
     "game",
     "server",
@@ -20,16 +19,22 @@
   },
   "license": "ISC",
   "author": "Samet Nurel",
-  "type": "commonjs",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "express": "^5.1.0",
     "socket.io": "^4.8.1"
   },
   "devDependencies": {
-    "@types/express": "^5.0.3"
+    "typescript": "^5.4.0",
+    "@types/express": "^5.0.3",
+    "@types/node": "^20.11.19"
   }
 }
