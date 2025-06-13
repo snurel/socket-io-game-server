@@ -57,7 +57,21 @@ Manages active connections and maps sockets to user IDs.
 
 ```ts
 ConnectionManager.init(new MyConnectionManager());
-ConnectionManager.getInstance().addConnection(new Connection(socket));
+
+export class MyConnectionManager extends ConnectionManager {
+  initCommands() {
+    .
+    .
+    .
+    this.initCommand(SoloTestMessages.InitPlayer, new InitPlayerCommand());
+    this.initCommand(SoloTestMessages.Disconnect, new DisconnectCommand());
+    this.initCommand(SoloTestMessages.LobbyChat, new LobbyChatCommand());
+    this.initCommand(SoloTestMessages.ChallengeUser, new ChallengeCommand());
+    .
+    .
+    .
+  }
+}
 ```
 
 - Auto-registers event listeners per socket
