@@ -47,8 +47,4 @@ export class Connection {
   getUserId(): number | undefined {
     return this.user?.getId();
   }
-
-  getUserCode(): string | undefined {
-    return `${this.user?.getName()}-${this.user?.getSecret()}`;
-  }
 }

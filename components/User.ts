@@ -1,12 +1,10 @@
 export class User {
   private id: number;
   private name: string;
-  private secret: string;
 
-  constructor(id: number, name: string, secret: string) {
+  constructor(id: number, name: string) {
     this.id = id;
     this.name = name;
-    this.secret = secret;
   }
 
   getId(): number {
@@ -15,9 +13,5 @@ export class User {
 
   getName(): string {
     return this.name;
-  }
-
-  getSecret(): string {
-    return this.secret;
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "socket-io-game-server",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "private": "false",
   "description": "A lightweight, real-time multiplayer game server built with Socket.IO. Handles player connections, game state synchronization, and event-driven communication for fast-paced, interactive gameplay. Easily extendable for various board or action games. ",
   "keywords": [
