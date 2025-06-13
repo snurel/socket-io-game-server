@@ -4,7 +4,7 @@ import http from 'http';
 import { Connection } from '../components/Connection';
 import { ConnectionManager } from './ConnectionManager';
 import Logger from '../utility/Logger';
-import { Messages } from '../abstractClasses/Messages';
+import { Messages } from '../base/Messages';
 
 export class IOManager {
   static instance: IOManager;

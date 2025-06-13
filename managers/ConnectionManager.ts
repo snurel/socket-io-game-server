@@ -1,8 +1,8 @@
 import { Socket } from 'socket.io';
 import { Connection } from '../components/Connection';
 import Logger from '../utility/Logger';
-import { BaseCommand } from '../abstractClasses/BaseCommand';
-import { Messages } from '../abstractClasses/Messages';
+import { BaseCommand } from '../base/BaseCommand';
+import { Messages } from '../base/Messages';
 
 export abstract class ConnectionManager {
   connections: Map<string, Connection>;

@@ -1,4 +1,4 @@
-import { GameStatus } from '../../tombala/enums/GameState';
+import { GameStatus } from '../enums/GameStatus';
 
 export abstract class Game {
   protected id: number;
