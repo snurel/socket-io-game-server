@@ -1,3 +1,4 @@
+import { GameOverParams } from '../enums/GameOverParams';
 import { GameStatus } from '../enums/GameStatus';
 
 export abstract class Game {
@@ -17,7 +18,7 @@ export abstract class Game {
     return this.gameState === 'STARTED';
   }
 
-  gameOver() {
+  gameOver(params: GameOverParams) {
     this.gameState = 'OVER';
   }
 

@@ -31,6 +31,17 @@ export abstract class ConnectionManager {
 
   abstract initCommands(): void;
 
+  public getInactiveConnections(ids: number[]) {
+    ids.forEach((userId) => {
+      const con = this.getConnectionByUserId(userId);
+      if (con) {
+        Logger.info(
+          `${userId} ready state: ${con.getSocket().conn._readyState}`
+        );
+      }
+    });
+  }
+
   protected initCommand(msg: Messages, cmd: BaseCommand<any, any>) {
     this.commands.set(msg, cmd);
   }
@@ -103,7 +114,10 @@ export abstract class ConnectionManager {
     this.addListeners(conn.getSocket());
   }
 
-  updateSocket(uniqueKey: string, socket: Socket): Connection | null {
+  getPrevoiuslyConnectedUserId(
+    uniqueKey: string,
+    socket: Socket
+  ): number | undefined {
     const conn = this.findConnectionByKey(uniqueKey);
 
     if (conn) {
@@ -111,12 +125,17 @@ export abstract class ConnectionManager {
         conn.getSocket().disconnect();
       }
 
-      conn.updateSocket(socket);
+      const userId = conn.getUserId();
+      if (userId) {
+        this.connectionUserMap.delete(userId);
+      }
 
-      return conn;
+      this.connections.delete(conn.getId());
+
+      return userId;
     }
 
-    return null;
+    return undefined;
   }
 
   findConnectionByKey(uniqueKey: string): Connection | undefined {
