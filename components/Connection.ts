@@ -49,6 +49,6 @@ export class Connection {
   }
 
   getUniqueKey(): string {
-    return this.user?.getName() ?? '';
+    return this.user?.getUniqueKey() ?? '';
   }
 }

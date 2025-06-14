@@ -96,7 +96,12 @@ export abstract class ConnectionManager {
     return null;
   }
 
-  protected abstract findConnectionByKey(
-    uniqueKey: string
-  ): Connection | undefined;
+  findConnectionByKey(uniqueKey: string): Connection | undefined {
+    for (const conn of this.connections.values()) {
+      if (conn.getUniqueKey() === uniqueKey) {
+        return conn;
+      }
+    }
+    return undefined;
+  }
 }

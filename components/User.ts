@@ -1,4 +1,4 @@
-export class User {
+export abstract class User {
   private id: number;
   private name: string;
 
@@ -14,4 +14,6 @@ export class User {
   getName(): string {
     return this.name;
   }
+
+  abstract getUniqueKey(): string;
 }
