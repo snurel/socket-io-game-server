@@ -3,8 +3,8 @@ import { User } from './User';
 import { IConnectionDetails } from './IConnectionDetails';
 
 export class Connection {
-  private socket: Socket;
-  private id: string;
+  private readonly socket: Socket;
+  private readonly id: string;
 
   private user: User | undefined;
 
@@ -29,11 +29,6 @@ export class Connection {
 
   getSocket(): Socket {
     return this.socket;
-  }
-
-  updateSocket(s: Socket) {
-    this.socket = s;
-    this.id = s.id.toString();
   }
 
   setUser(user: User) {

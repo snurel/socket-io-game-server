@@ -1,6 +1,6 @@
 {
   "name": "@sametnurel/socket-io-game-server",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "A lightweight, real-time multiplayer game server built with Socket.IO.",
   "keywords": [
     "game",
