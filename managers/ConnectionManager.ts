@@ -5,8 +5,8 @@ import { BaseCommand } from '../base/BaseCommand';
 import { Messages } from '../base/Messages';
 
 export abstract class ConnectionManager {
-  connections: Map<string, Connection>;
-  connectionUserMap: Map<number, string>;
+  private connections: Map<string, Connection>;
+  private connectionUserMap: Map<number, string>;
 
   private static instance: ConnectionManager;
   protected commands: Map<Messages, BaseCommand<any, any>>;
@@ -30,6 +30,7 @@ export abstract class ConnectionManager {
   }
 
   abstract initCommands(): void;
+
   protected initCommand(msg: Messages, cmd: BaseCommand<any, any>) {
     this.commands.set(msg, cmd);
   }
@@ -38,12 +39,34 @@ export abstract class ConnectionManager {
     this.connectionUserMap.set(userId, connectionId);
   }
 
+  public getConnection(conId: string): Connection | undefined {
+    return this.connections.get(conId);
+  }
+
+  public getConnectionByUserId(userId: number): Connection | undefined {
+    const conId = this.connectionUserMap.get(userId);
+    if (!conId) {
+      return undefined;
+    }
+
+    return this.getConnection(conId);
+  }
+
   public getConnectionIdByUserId(userId: number): string | undefined {
     return this.connectionUserMap.get(userId);
   }
 
   public clearUserIdFromMap(userId: number) {
     this.connectionUserMap.delete(userId);
+  }
+
+  public clearUser(userId: number) {
+    const conId = this.getConnectionIdByUserId(userId);
+    if (conId) {
+      this.connections.delete(conId);
+    }
+
+    this.clearUserIdFromMap(userId);
   }
 
   private addListeners(socket: Socket): void {
